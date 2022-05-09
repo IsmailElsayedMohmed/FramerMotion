@@ -1,0 +1,18 @@
+// Breakpoints
+@media (min-width: 64em) {
+  // styles go here
+}
+
+// 640px, 1024px, 1400px
+$breakpoints: (
+  "xs": "0",
+  "sm": "40em",
+  "md": "64em",
+  "lg": "87.5em",
+);
+
+@mixin breakpoint($spec, $size) {
+  @media (#{$spec}-width: map-get($breakpoints, $size)) {
+    @content;
+  }
+}

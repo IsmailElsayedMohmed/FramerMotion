@@ -1,0 +1,188 @@
+// components
+@use "../components/Home";
+// components
+@use "./variables" as *;
+@use "./mixins" as *;
+@import url("https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;700&display=swap");
+html {
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+:root {
+  --clr-main: #2196f3;
+  --clr-sc: #666;
+  --clr-bg: #ececec;
+  --clr-black: #000;
+}
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-fm;
+  font-size: 1rem;
+  line-height: 1.3;
+}
+img {
+  width: 100%;
+  height: 100%;
+}
+h1,
+h2,
+h3 {
+  font-weight: 300;
+  line-height: 1.1;
+  margin-top: 0;
+  margin-bottom: 0.5em;
+  color: var(--clr-black);
+}
+p {
+  line-height: 1.5;
+  margin-top: 0;
+  font-size: $font-md;
+  color: var(--clr-sc);
+  margin-bottom: 0.5em;
+  letter-spacing: 1px;
+}
+h1 {
+  font-size: $font-xl;
+  @include breakpoint(min, md) {
+    font-size: $font-2xl;
+  }
+}
+h2 {
+  font-size: $font-lg;
+  @include breakpoint(min, md) {
+    font-size: $font-xl;
+  }
+}
+h3 {
+  font-size: $font-md;
+  @include breakpoint(min, md) {
+    font-size: $font-lg;
+  }
+}
+
+a,
+a:visited,
+a:hover {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+}
+// utility
+.flex {
+  display: flex;
+  gap: var(--gap, 1rem);
+}
+.button {
+  margin-bottom: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  border: 2px solid var(--clr-black);
+  font-weight: bold;
+  font-size: $font-lg;
+  &-sm {
+    font-size: $font-sm;
+  }
+  background: transparent;
+  padding: 0.8em 2em;
+  position: relative;
+  z-index: 1;
+  &::before {
+    position: absolute;
+    content: "";
+    top: 50%;
+    left: -30px;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--clr-main);
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    top: 50%;
+    right: -30px;
+    transform: translateY(-50%);
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--clr-main);
+  }
+  &:hover::before {
+    animation: hoverbuttonBefore 0.5s ease-in-out 1 forwards;
+    transform: rotate(10deg) translateY(-30px);
+    transition: transform 0.3s;
+    transition-delay: 0.5s;
+    z-index: -1;
+  }
+  &:hover::after {
+    animation: hoverbuttonAfter 0.5s ease-in-out 1 forwards;
+    transform: rotate(10deg) translateY(-30px);
+    transition: transform 0.3s;
+    transition-delay: 0.5s;
+    z-index: -1;
+  }
+  &:hover {
+    color: #fff;
+    transition: background 0.3s 0.5s, color 0.3s 0.5s;
+    background: #2196f36b;
+  }
+  @keyframes hoverbuttonBefore {
+    0% {
+      left: -30px;
+    }
+    20% {
+      left: -10px;
+    }
+    100% {
+      border-radius: 0;
+      left: 0;
+      height: 100%;
+      width: 50%;
+    }
+  }
+  @keyframes hoverbuttonAfter {
+    0% {
+      right: -30px;
+    }
+    20% {
+      right: -10px;
+    }
+    100% {
+      border-radius: 0;
+      right: 0;
+      height: 100%;
+      width: 50%;
+    }
+  }
+}
+.grid {
+  display: grid;
+  gap: var(--gap, 1rem);
+  grid-template-columns: repeat(auto-fit, minmax(var(--gtc, 1fr), 1fr));
+}
+
+.container {
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 70rem;
+  padding: 0 10px;
+}
+
+ul {
+  padding: 0;
+  margin: 0;
+}
+li {
+  list-style: none;
+}

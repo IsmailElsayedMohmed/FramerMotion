@@ -1,0 +1,6 @@
+@use "./mixins" as *;
+@use "./variables" as *;
+.header {
+  height: 80px;
+  font-size: $font-2xl;
+}

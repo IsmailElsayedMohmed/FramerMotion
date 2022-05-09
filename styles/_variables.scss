@@ -1,0 +1,12 @@
+$font-fm: "Open Sans", sans-serif;
+
+$font-sm: 1rem;
+$font-md: 1.3rem;
+$font-lg: 1.8rem;
+$font-xl: 2.3rem;
+$font-2xl: 2.8rem;
+%flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
